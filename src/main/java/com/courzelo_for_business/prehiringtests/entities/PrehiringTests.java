@@ -29,40 +29,42 @@ public class PrehiringTests {
 	    @Field(value = "creationDate")
 	    private Date creationDate;
 	    
-	    @Field(value = "type")
-	    private String type;
-	    
-	    @Field(value = "level")
-	    private String level;
-	    
 	    @Field(value = "intro")
 	    private String intro;
-	    
-	    @Field(value = "deadline")
-	    private Date deadline;
-	    
-	    @Field(value = "vdDate")
-	    private Date vdDate;
 	    
 	    @Field(value = "questions")
 	    private List<Questions> questions;
 	    
-	    @Field(value = "idBusiness")
-	    private String idBusiness;
+	    @Field(value = "business")
+	    private Business business;
 
-	    @Field(value = "openDate")
+	    @Field(value = "randomOrder")
+		private boolean randomOrder;
+		
+		
+
+	    
+	    /*@Field(value = "type")
+	    private String type;
+	    
+	    @Field(value = "level")
+	    private String level;*/
+	    
+
+	    /*@Field(value = "deadline")
+	    private Date deadline; */
+	    
+
+	    /*@Field(value = "openDate")
 	    private Date openDate;
 	    
 	    @Field(value = "closeDate")
 		private Date closeDate;
 		  
 	    @Field(value = "indefinitDate")
-		private boolean indefinitDate;
+		private boolean indefinitDate;*/
 	    
-	    @Field(value = "randomOrder")
-		private boolean randomOrder;
-		
-		
+	    
 
 		public PrehiringTests() {
 			super();

@@ -27,6 +27,7 @@ public class PrehiringTestsRestAPI {
 	@Autowired
 	private IServiceRestPrehiringTests iTests;
 	
+
 	@GetMapping(path = "")
 	public List<PrehiringTestsDTO> getAllTests() {
 		return iTests.getAllTests(); 
@@ -58,9 +59,9 @@ public class PrehiringTestsRestAPI {
 	
 	
 	@PostMapping(path = "")
-    public ResponseEntity<PrehiringTestsDTO> addTest(@RequestBody  @Valid  PrehiringTestsDTO test) {
+    public ResponseEntity<PrehiringTestsDTO> addTest(@RequestBody  @Valid  PrehiringTestsDTO test,@PathVariable(name = "idBusiness") String idBusiness) {
 		
-		PrehiringTestsDTO testResponse = iTests.addTest(test);
+		PrehiringTestsDTO testResponse = iTests.addTest(test,idBusiness);
 		
         return new ResponseEntity<PrehiringTestsDTO>(testResponse, HttpStatus.CREATED);
     }

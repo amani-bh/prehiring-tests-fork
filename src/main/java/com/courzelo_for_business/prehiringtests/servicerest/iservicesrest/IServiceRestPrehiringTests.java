@@ -15,7 +15,7 @@ public interface IServiceRestPrehiringTests {
 	public List<PrehiringTestsDTO> getTestByBusiness(String idBusiness);
 	public PrehiringTestsDTO getTestById(String idTest) throws IOException;
 	
-	public PrehiringTestsDTO addTest(PrehiringTestsDTO requsestTest);
+	public PrehiringTestsDTO addTest(PrehiringTestsDTO requsestTest,String idBusiness);
 	public PrehiringTestsDTO updateTest(String idTest , PrehiringTestsDTO requestTest); 
 	public void deleteTest(String idTest); 
 

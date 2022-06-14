@@ -129,13 +129,17 @@ public class PrehiringTestsRestService implements IServiceRestPrehiringTests {
 	    	thetest.setQuestions(test.getQuestions());
 	    	thetest.setIntro(test.getIntro());
 	    	thetest.setRandomOrder(test.isRandomOrder());
+	    	System.out.println("id1 "+thetest);
 	    	
 	    	Map<String, String> params2 = new HashMap<String, String>();
-			params2.put("userId", test.getBusiness().getIdBusiness());
+			params2.put("userId", thetest.getBusiness().getIdBusiness());
 			Business business = restTemplateBuilder.build().getForObject(GET_Business_BY_ID_API, Business.class, params2);
 			thetest.setBusiness(business);
 			
-	    	thetest.getQuestions().forEach(q->q.setQuestionId(sequenceGeneratorService.generateSequence(Questions.SEQUENCE_NAME)));
+	    	if(thetest.getQuestions()!=null) {
+	    		thetest.getQuestions().forEach(q->q.setQuestionId(sequenceGeneratorService.generateSequence(Questions.SEQUENCE_NAME)));
+	    	    
+	    	}
 	    	PrehiringTests newTest = testRepository.save(thetest);
 			return mapper.map(newTest, PrehiringTestsDTO.class);
 			

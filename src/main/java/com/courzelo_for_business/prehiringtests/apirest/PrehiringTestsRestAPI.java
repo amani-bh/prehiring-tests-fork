@@ -58,7 +58,7 @@ public class PrehiringTestsRestAPI {
     }
 	
 	
-	@PostMapping(path = "")
+	@PostMapping(path = "/{idBusiness}")
     public ResponseEntity<PrehiringTestsDTO> addTest(@RequestBody  @Valid  PrehiringTestsDTO test,@PathVariable(name = "idBusiness") String idBusiness) {
 		
 		PrehiringTestsDTO testResponse = iTests.addTest(test,idBusiness);

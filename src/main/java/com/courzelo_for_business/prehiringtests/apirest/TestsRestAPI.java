@@ -35,7 +35,7 @@ public class TestsRestAPI {
 		return iTest.getByBusiness(idBusiness); 
 	}
 	
-	@PostMapping(path = "")
+	@PostMapping(path = "/{idBusiness}")
     public ResponseEntity<TestsDTO> addTest(@RequestBody  @Valid  TestsDTO test,@PathVariable(name = "idBusiness") String idBusiness) {
 		
 		TestsDTO testResponse = iTest.addTest(test,idBusiness);

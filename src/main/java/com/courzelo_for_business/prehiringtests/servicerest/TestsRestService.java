@@ -31,7 +31,7 @@ public class TestsRestService implements IServiceRestTests {
     RestTemplateBuilder restTemplateBuilder;
    
  
-    private static final String GET_Business_BY_ID_API = "https://springgateway.herokuapp.com/business-auth/api/auth/{userId}";
+    private static final String GET_BUSINESS_BY_ID_API = "https://springgateway.herokuapp.com/business-auth/api/auth/{userId}";
     
     
     @Override
@@ -42,7 +42,7 @@ public class TestsRestService implements IServiceRestTests {
 			if(t.getBusiness()!=null) {
 				Map<String, String> params2 = new HashMap<String, String>();
 				params2.put("userId", t.getBusiness().getIdBusiness());
-				Business business = restTemplateBuilder.build().getForObject(GET_Business_BY_ID_API, Business.class, params2);
+				Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
 			    t.setBusiness(business);
 			}
 		});
@@ -60,7 +60,7 @@ public class TestsRestService implements IServiceRestTests {
 			if(t.getBusiness()!=null) {
 				Map<String, String> params2 = new HashMap<String, String>();
 				params2.put("userId", t.getBusiness().getIdBusiness());
-				Business business = restTemplateBuilder.build().getForObject(GET_Business_BY_ID_API, Business.class, params2);
+				Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
 			    t.setBusiness(business);
 			}
 		});
@@ -76,7 +76,7 @@ public class TestsRestService implements IServiceRestTests {
 		   Tests thetest = mapper.map(test, Tests.class);
 		    Map<String, String> params2 = new HashMap<String, String>();
 			params2.put("userId", idBusiness);
-			Business business = restTemplateBuilder.build().getForObject(GET_Business_BY_ID_API, Business.class, params2);
+			Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
 			thetest.setBusiness(business);
 			
 			
@@ -97,7 +97,7 @@ public class TestsRestService implements IServiceRestTests {
     	
     	Map<String, String> params2 = new HashMap<String, String>();
 		params2.put("userId", requestTest.getBusiness().getIdBusiness());
-		Business business = restTemplateBuilder.build().getForObject(GET_Business_BY_ID_API, Business.class, params2);
+		Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
 		theTest.setBusiness(business);
 		
 		

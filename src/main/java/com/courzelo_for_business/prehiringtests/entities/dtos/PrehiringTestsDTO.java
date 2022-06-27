@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.courzelo_for_business.prehiringtests.entities.Business;
-import com.courzelo_for_business.prehiringtests.entities.JobOffers;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,24 +29,7 @@ public class PrehiringTestsDTO {
     
     private List<QuestionsDTO> questions;
   
-    //private String type;
-    
-    //private String level;
- 
-    //private Date deadline;
-  
-    //private Date vdDate;
-
    
-    
-    //private Date openDate;
-    
-	//private Date closeDate;
-	  
-	//private boolean indefinitDate;
-	
-	
-    
     
 	public PrehiringTestsDTO() {
 		super();

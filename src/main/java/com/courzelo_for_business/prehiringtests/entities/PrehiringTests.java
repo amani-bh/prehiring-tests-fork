@@ -40,32 +40,7 @@ public class PrehiringTests {
 
 	    @Field(value = "randomOrder")
 		private boolean randomOrder;
-		
-		
-
-	    
-	    /*@Field(value = "type")
-	    private String type;
-	    
-	    @Field(value = "level")
-	    private String level;*/
-	    
-
-	    /*@Field(value = "deadline")
-	    private Date deadline; */
-	    
-
-	    /*@Field(value = "openDate")
-	    private Date openDate;
-	    
-	    @Field(value = "closeDate")
-		private Date closeDate;
-		  
-	    @Field(value = "indefinitDate")
-		private boolean indefinitDate;*/
-	    
-	    
-
+	
 		public PrehiringTests() {
 			super();
 		}

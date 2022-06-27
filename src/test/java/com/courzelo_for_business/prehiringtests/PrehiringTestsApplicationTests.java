@@ -9,9 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.courzelo_for_business.prehiringtests.entities.Business;
-import com.courzelo_for_business.prehiringtests.entities.JobOffers;
 import com.courzelo_for_business.prehiringtests.entities.dtos.PrehiringTestsDTO;
 import com.courzelo_for_business.prehiringtests.entities.dtos.QuestionsDTO;
 import com.courzelo_for_business.prehiringtests.servicerest.iservicesrest.IServiceRestPrehiringTests;
@@ -24,32 +21,32 @@ public class PrehiringTestsApplicationTests {
 	IServiceRestPrehiringTests iServiceprehiring;
 
 	
-	/*@Test
-    public void GetJobs()
+	@Test
+    public void getJobs()
     {       List<PrehiringTestsDTO> tests=iServiceprehiring.getAllTests();
-            Assert.assertEquals(tests.size(),0);
+            Assert.assertEquals(0,tests.size());
     }
 	
 	
-	 public void GetJobsByBusiness()
+	 public void getJobsByBusiness()
 	    {       List<PrehiringTestsDTO> tests=iServiceprehiring.getTestByBusiness("626b2efbf1d5b22ee0106932");
-	            Assert.assertEquals(tests.size(),0);
+	            Assert.assertEquals(0,tests.size());
 	    }
 	 
-	 public void GetQuestionByTest()
+	 public void getQuestionByTest()
 	    {       List<QuestionsDTO> question=iServiceprehiring.getQuestionsByTest("626b2efbf1d5b22ee0106932");
-	            Assert.assertEquals(question.size(),0);
-	    }*/
+	            Assert.assertEquals(0,question.size());
+	    }
 	 
 	@Test
-    public void AddTest()
+    public void addTest()
     {       PrehiringTestsDTO test=new PrehiringTestsDTO(); 
             test.setCreationDate(new Date());
-            PrehiringTestsDTO res=iServiceprehiring.addTest(test,"6261e803e22a337c2ec32e05");
+            iServiceprehiring.addTest(test,"6261e803e22a337c2ec32e05");
             List<PrehiringTestsDTO> tests=iServiceprehiring.getAllTests();
-            Assert.assertEquals(tests.size(),1);
+            Assert.assertEquals(1,tests.size());
 		    
-            
+           
     }
 	
 }

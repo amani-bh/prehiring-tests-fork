@@ -17,7 +17,6 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.courzelo_for_business.prehiringtests.entities.Business;
-import com.courzelo_for_business.prehiringtests.entities.JobOffers;
 import com.courzelo_for_business.prehiringtests.entities.PrehiringTests;
 import com.courzelo_for_business.prehiringtests.entities.Questions;
 import com.courzelo_for_business.prehiringtests.entities.dtos.QuestionsDTO;
@@ -47,7 +46,7 @@ public class PrehiringTestsRestService implements IServiceRestPrehiringTests {
 	    RestTemplateBuilder restTemplateBuilder;
 	   
 	 
-	    private static final String GET_Business_BY_ID_API = "https://springgateway.herokuapp.com/business-auth/api/auth/{userId}";
+	    private static final String GET_BUSINESS_BY_ID_API = "https://springgateway.herokuapp.com/business-auth/api/auth/{userId}";
 	    
 	    @Override
 		public List<PrehiringTestsDTO> getAllTests() {
@@ -58,7 +57,7 @@ public class PrehiringTestsRestService implements IServiceRestPrehiringTests {
 				if(t.getBusiness()!=null) {
 					Map<String, String> params2 = new HashMap<String, String>();
 					params2.put("userId", t.getBusiness().getIdBusiness());
-					Business business = restTemplateBuilder.build().getForObject(GET_Business_BY_ID_API, Business.class, params2);
+					Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
 				    t.setBusiness(business);
 				}
 			});
@@ -73,7 +72,7 @@ public class PrehiringTestsRestService implements IServiceRestPrehiringTests {
 	    		if(t.getBusiness()!=null) {
 					Map<String, String> params2 = new HashMap<String, String>();
 					params2.put("userId", t.getBusiness().getIdBusiness());
-					Business business = restTemplateBuilder.build().getForObject(GET_Business_BY_ID_API, Business.class, params2);
+					Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
 				    t.setBusiness(business);
 				}
 			});
@@ -92,7 +91,7 @@ public class PrehiringTestsRestService implements IServiceRestPrehiringTests {
 				if(test.getBusiness()!=null) {
 					Map<String, String> params2 = new HashMap<String, String>();
 					params2.put("userId", test.getBusiness().getIdBusiness());
-					Business business = restTemplateBuilder.build().getForObject(GET_Business_BY_ID_API, Business.class, params2);
+					Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
 					test.setBusiness(business);
 				}
 				return mapper.map(test, PrehiringTestsDTO.class); 
@@ -109,7 +108,7 @@ public class PrehiringTestsRestService implements IServiceRestPrehiringTests {
 		   PrehiringTests test = mapper.map(requestTest, PrehiringTests.class);
 		   Map<String, String> params2 = new HashMap<String, String>();
 			params2.put("userId", idBusiness);
-			Business business = restTemplateBuilder.build().getForObject(GET_Business_BY_ID_API, Business.class, params2);
+			Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
 			test.setBusiness(business);
 			
 		   PrehiringTests newTest = testRepository.save(test);
@@ -129,11 +128,9 @@ public class PrehiringTestsRestService implements IServiceRestPrehiringTests {
 	    	thetest.setQuestions(test.getQuestions());
 	    	thetest.setIntro(test.getIntro());
 	    	thetest.setRandomOrder(test.isRandomOrder());
-	    	System.out.println("id1 "+thetest);
-	    	
 	    	Map<String, String> params2 = new HashMap<String, String>();
 			params2.put("userId", thetest.getBusiness().getIdBusiness());
-			Business business = restTemplateBuilder.build().getForObject(GET_Business_BY_ID_API, Business.class, params2);
+			Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
 			thetest.setBusiness(business);
 			
 	    	if(thetest.getQuestions()!=null) {
@@ -143,15 +140,7 @@ public class PrehiringTestsRestService implements IServiceRestPrehiringTests {
 	    	PrehiringTests newTest = testRepository.save(thetest);
 			return mapper.map(newTest, PrehiringTestsDTO.class);
 			
-			
-			//thetest.setType(test.getType());
-	    	//thetest.setDeadline(test.getDeadline());
-	    	//thetest.setVdDate(test.getVdDate());
-	    	//thetest.setIdBusiness(test.getIdBusiness());
-	    	//thetest.setLevel(test.getLevel());
-	    	//thetest.setOpenDate(test.getOpenDate());
-	    	//thetest.setIndefinitDate(test.isIndefinitDate());
-	    	//thetest.setCloseDate(test.getCloseDate());
+		
 			
 			
 		}

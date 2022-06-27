@@ -3,8 +3,6 @@ package com.courzelo_for_business.prehiringtests.entities.dtos;
 import java.util.Date;
 
 import com.courzelo_for_business.prehiringtests.entities.Business;
-import com.courzelo_for_business.prehiringtests.entities.JobOffers;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

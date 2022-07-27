@@ -52,6 +52,12 @@ public class TestsRestService implements IServiceRestTests {
 		
 	}
     
+    public TestsDTO getByIdTest(String idTest) {
+		Tests newTest = testRepository.findByIdTest(idTest);
+		return mapper.map(newTest, TestsDTO.class);
+		
+	}
+    
     @Override
     public List<TestsDTO> getByBusiness(String idBusiness ){
 		List<Tests> tests = testRepository.findByBusinessIdBusiness(idBusiness);
@@ -118,10 +124,10 @@ public class TestsRestService implements IServiceRestTests {
 	@Override
 	public void deleteTest(String idTest) {
 		testRepository.deleteById(idTest);
-		
-		
-		
+			
 	}
+	
+	
 	
 	
 }

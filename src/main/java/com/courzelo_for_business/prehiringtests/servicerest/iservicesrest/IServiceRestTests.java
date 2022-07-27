@@ -8,7 +8,8 @@ public interface IServiceRestTests {
 	
 	public TestsDTO addTest(TestsDTO test,String idBusiness);
 	public List<TestsDTO> getAllTests();
-	 public List<TestsDTO> getByBusiness(String idBusiness );
+	public TestsDTO getByIdTest(String idTest);
+	public List<TestsDTO> getByBusiness(String idBusiness );
 	public TestsDTO updateTest(String idTest , TestsDTO requestTest);
 	public void deleteTest(String idTest);
 }

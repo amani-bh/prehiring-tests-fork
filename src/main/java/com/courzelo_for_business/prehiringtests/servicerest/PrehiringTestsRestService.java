@@ -46,8 +46,9 @@ public class PrehiringTestsRestService implements IServiceRestPrehiringTests {
 	    RestTemplateBuilder restTemplateBuilder;
 	   
 	 
-	    private static final String GET_BUSINESS_BY_ID_API = "https://springgateway.herokuapp.com/business-auth/api/auth/{userId}";
-	    
+//	    private static final String GET_BUSINESS_BY_ID_API = "https://springgateway.herokuapp.com/business-auth/api/auth/{userId}";
+	    private static final String GET_BUSINESS_BY_ID_API = "http://localhost:8090/api/auth/{userId}";
+	     
 	    @Override
 		public List<PrehiringTestsDTO> getAllTests() {
 			
@@ -252,6 +253,23 @@ public class PrehiringTestsRestService implements IServiceRestPrehiringTests {
 	    	}
 	    	return  ((double)(score*100)/thetest.getQuestions().size());
 	    }
+
+		@Override
+		public List<PrehiringTestsDTO> getTestByBusinessCompanyName(String companyName) {
+		List<PrehiringTests> prehiringTests = testRepository.findByBusinessCompanyName(companyName);
+	    	
+	    	prehiringTests.forEach(t->{
+	    		if(t.getBusiness()!=null) {
+					Map<String, String> params2 = new HashMap<String, String>();
+					params2.put("userId", t.getBusiness().getIdBusiness());
+					Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
+				    t.setBusiness(business);
+				}
+			});
+	    	
+			return prehiringTests.stream().map(test -> mapper.map(test, PrehiringTestsDTO.class))
+			.collect(Collectors.toList());
+		}
 	    
 	   
 }

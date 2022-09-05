@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,17 +30,15 @@ public class TestsRestAPI {
 		return iTest.getAllTests(); 
 	}
 	
-	@GetMapping(path = "/id/{idTest}")
-	public TestsDTO getTestById(@PathVariable(name = "idTest") String idTest) {
-		return iTest.getByIdTest(idTest); 
-	}
-	
-	
 	@GetMapping(path = "/{idBusiness}")
 	public List<TestsDTO> getAllTestByBusiness(@PathVariable(name = "idBusiness") String idBusiness) {
 		return iTest.getByBusiness(idBusiness); 
 	}
 	
+	@GetMapping(path = "/byCompanyName/{companyName}")
+	public List<TestsDTO> getAllTestByBusinessCompanyName(@PathVariable(name = "companyName") String companyName) {
+		return iTest.getByBusinessCompanyName(companyName); 
+	}
 	@PostMapping(path = "/{idBusiness}")
     public ResponseEntity<TestsDTO> addTest(@RequestBody  @Valid  TestsDTO test,@PathVariable(name = "idBusiness") String idBusiness) {
 		
@@ -52,11 +49,5 @@ public class TestsRestAPI {
 	
 	
 	
-	
-	@DeleteMapping(path = "/{idTest}")
-	public void deleteTest(@PathVariable(name = "idTest") String idTest) {
-		iTest.deleteTest(idTest);
-		
-	}
 	
 }

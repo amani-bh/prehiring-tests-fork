@@ -38,6 +38,11 @@ public class PrehiringTestsRestAPI {
 		return iTests.getTestByBusiness(idBusiness); 
 	}
 	
+	@GetMapping(path = "/businessCompanyName/{companyName}")
+	public List<PrehiringTestsDTO> getTestsByBusinessCompanyName(@PathVariable(name = "companyName")  String companyName) {
+		return iTests.getTestByBusinessCompanyName(companyName); 
+	}
+	
 	
 	@GetMapping(path = "/{idPrehiringTest}")
     public ResponseEntity<?> getTest(@PathVariable(name = "idPrehiringTest")  String idPrehiringTest) {

@@ -14,4 +14,5 @@ public interface TestsRepository extends MongoRepository<Tests,String> {
 	
 	public Tests findByIdTest(String idTest);
 	public List<Tests> findByBusinessIdBusiness(String idBusiness);
+	public List<Tests>  findByBusinessCompanyName(String companyName);
 }

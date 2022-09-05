@@ -13,5 +13,6 @@ public interface PrehiringTestsRepository extends MongoRepository<PrehiringTests
 		public PrehiringTests findByTitle(String title);
 		public PrehiringTests findByIdPrehiringTest(String idPrehiringTest);
 		public List<PrehiringTests> findByBusinessIdBusiness(String idBusiness);
+		public List<PrehiringTests> findByBusinessCompanyName(String companyName);
 
 }

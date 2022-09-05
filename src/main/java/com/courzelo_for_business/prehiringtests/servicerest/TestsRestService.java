@@ -31,8 +31,9 @@ public class TestsRestService implements IServiceRestTests {
     RestTemplateBuilder restTemplateBuilder;
    
  
-    private static final String GET_BUSINESS_BY_ID_API = "https://springgateway.herokuapp.com/business-auth/api/auth/{userId}";
-    
+//    private static final String GET_BUSINESS_BY_ID_API = "https://springgateway.herokuapp.com/business-auth/api/auth/{userId}";
+    private static final String GET_BUSINESS_BY_ID_API = "http://localhost:8090/api/auth/{userId}";
+	   
     
     @Override
     public List<TestsDTO> getAllTests(){
@@ -49,12 +50,6 @@ public class TestsRestService implements IServiceRestTests {
 		
 		return tests.stream().map(test -> mapper.map(test, TestsDTO.class))
 		.collect(Collectors.toList());
-		
-	}
-    
-    public TestsDTO getByIdTest(String idTest) {
-		Tests newTest = testRepository.findByIdTest(idTest);
-		return mapper.map(newTest, TestsDTO.class);
 		
 	}
     
@@ -124,10 +119,27 @@ public class TestsRestService implements IServiceRestTests {
 	@Override
 	public void deleteTest(String idTest) {
 		testRepository.deleteById(idTest);
-			
+		
+		
+		
 	}
-	
-	
+
+	@Override
+	public List<TestsDTO> getByBusinessCompanyName(String companyName) {
+		List<Tests> tests = testRepository.findByBusinessCompanyName(companyName);
+		
+		tests.forEach(t->{
+			if(t.getBusiness()!=null) {
+				Map<String, String> params2 = new HashMap<String, String>();
+				params2.put("userId", t.getBusiness().getIdBusiness());
+				Business business = restTemplateBuilder.build().getForObject(GET_BUSINESS_BY_ID_API, Business.class, params2);
+			    t.setBusiness(business);
+			}
+		});
+		System.out.println("***"+tests.size());
+		return tests.stream().map(test -> mapper.map(test, TestsDTO.class))
+		.collect(Collectors.toList());
+	}
 	
 	
 }

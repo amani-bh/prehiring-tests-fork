@@ -13,6 +13,7 @@ public interface IServiceRestPrehiringTests {
 
 	public List<PrehiringTestsDTO> getAllTests();
 	public List<PrehiringTestsDTO> getTestByBusiness(String idBusiness);
+	public List<PrehiringTestsDTO> getTestByBusinessCompanyName(String companyName);
 	public PrehiringTestsDTO getTestById(String idTest) throws IOException;
 	
 	public PrehiringTestsDTO addTest(PrehiringTestsDTO requsestTest,String idBusiness);
